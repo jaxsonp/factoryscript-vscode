@@ -1,0 +1,25 @@
+{
+  "name": "factoryscript-language-support",
+  "displayName": "FactoryScript Language Support",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "factory-script",
+      "aliases": ["FactoryScript", "factory-script"],
+      "extensions": [".factory"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "factory-script",
+      "scopeName": "source.factory",
+      "path": "./syntaxes/factory-script.tmLanguage.json"
+    }]
+  }
+}
