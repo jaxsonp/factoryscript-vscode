@@ -10,16 +10,25 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "factory-script",
-      "aliases": ["FactoryScript", "factory-script"],
-      "extensions": [".factory"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "factory-script",
-      "scopeName": "source.factory",
-      "path": "./syntaxes/factory-script.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "factory-script",
+        "aliases": [
+          "FactoryScript",
+          "factory-script"
+        ],
+        "extensions": [
+          ".factory"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "factory-script",
+        "scopeName": "source.factory",
+        "path": "./syntaxes/factory-script.tmLanguage.json"
+      }
+    ]
   }
 }

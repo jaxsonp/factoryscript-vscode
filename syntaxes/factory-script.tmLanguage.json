@@ -2,30 +2,84 @@
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
 	"name": "FactoryScript",
 	"patterns": [
+		{ "name": "meta.structure.station.factory", "match": "\\[\\]" },
 		{
-			"include": "#keywords"
+			"name": "meta.structure.station.factory",
+			"match": "\\[(main|exit|joint|gate|\\?|filter|X|print|println|readln)\\]",
+			"captures": {
+				"1": {
+					"name": "keyword.control.factory"
+				},
+				"2": {
+					"name": "entity.name.tag"
+				}
+			}
 		},
 		{
-			"include": "#strings"
+			"name": "meta.structure.station.factory",
+			"match": "\\[(eq|=|ne|!=|gt|>|lt|<|gte|>=|lte|<=|add|\\+|sub|\\-|mult|\\*|div|/|mod|\\%|inc|\\+\\+|dec|\\-\\-|and|&&|or|\\|\\|not|!)\\]",
+			"captures": {
+				"1": {
+					"name": "keyword.operator.factory"
+				},
+				"2": {
+					"name": "entity.name.tag"
+				}
+			}
+		},
+		{
+			"name": "meta.structure.station.function.factory",
+			"match": "\\[\\$([a-zA-Z0-9_]+)(\\.(?:out|[0-9]+))?\\]",
+			"captures": {
+				"1": {
+					"name": "entity.name.function.factory"
+				},
+				"2": {
+					"name": "entity.name.tag.factory"
+				}
+			}
+		},
+		{
+			"name": "meta.structure.station.assign.factory",
+			"begin": "{",
+			"end": "}",
+			"contentName": "constant.factory",
+			"patterns": [
+				{
+					"name": "constant.other.factory",
+					"match": "(true|false)"
+				},
+				{
+					"name": "constant.numeric.factory",
+					"match": "([0-9]+|[0-9]*\\.[0-9]+)[f]?"
+				},
+				{
+					"name": "string.quoted.double.factory",
+					"begin": "\"",
+					"end": "\"",
+					"patterns": [{ "include": "#escape-char" }]
+				},
+				{
+					"name": "string.quoted.single.factory",
+					"begin": "'",
+					"end": "'",
+					"patterns": [{ "include": "#escape-char" }]
+				}
+			]
+		},
+		{
+			"name": "meta.structure.conveyor-belt.factory",
+			"match": "(─|│|┌|┐|└|┘|═|║|╔|╗|╚|╝)"
+		},
+		{
+			"name": "comment.block.factory",
+			"match": "."
 		}
 	],
 	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.factory-script",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.factory-script",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.factory-script",
-					"match": "\\\\."
-				}
-			]
+		"escape-char": {
+			"name": "constant.character.escape.factory",
+			"match": "\\\\."
 		}
 	},
 	"scopeName": "source.factory"
